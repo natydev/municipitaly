@@ -1,0 +1,31 @@
+# frozen_string_literal: true
+
+module Municipitaly
+  # Define data structure for a Province
+  class Province
+    extend Forwardable
+    include DataCaller
+    include RegionDelegator
+    include ZoneDelegator
+
+    def initialize(region_istat:, name:, istat:, acronym:)
+      @region_istat = region_istat
+      @name = name
+      @istat = istat
+      @acronym = acronym
+    end
+
+    attr_reader :region_istat, :name, :istat, :acronym
+
+    # returns an array of all +Municipitaly::Province+ objects.
+    def self.all
+      data.provinces
+    end
+
+    # returns an array of all +Municipitaly::Municipality+ objects belongs
+    # to current province.
+    def municipalities
+      @municipalities ||= Search.municipalities_from_province_istat(istat)
+    end
+  end
+end

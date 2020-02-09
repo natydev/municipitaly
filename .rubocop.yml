@@ -1,0 +1,18 @@
+Metrics/BlockLength:
+  Max: 50
+  Exclude:
+    - 'municipitaly.gemspec'
+    - 'lib/**/*.rb'
+    - 'spec/**/*.rb'
+
+Metrics/ParameterLists:
+  Max: 10
+
+Style/ClassVars:
+  Exclude:
+    - 'lib/municipitaly/data.rb'
+
+Style/CommentedKeyword:
+  Exclude:
+    - 'lib/municipitaly/search.rb'
+    

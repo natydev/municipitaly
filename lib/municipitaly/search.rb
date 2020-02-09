@@ -1,0 +1,204 @@
+# frozen_string_literal: true
+
+module Municipitaly
+  # +Municipitaly::Search+ class implement different search methods.
+  #
+  # You <b>must use</b> shortcut <b>class methods</b> that invoke private
+  # instance methods having same method name, for example:
+  #
+  #   Search.municipalities_from_postal_code('36040')
+  #
+  # invoke to:
+  #
+  #   Search.new('36040').municipalities_from_postal_code
+  #
+  class Search
+    include DataCaller
+
+    CLASS_METHODS = %i[zone_from_code region_from_istat
+                       regions_from_zone_code province_from_istat
+                       province_from_acronym provinces_from_region_istat
+                       provinces_from_zone_code municipalities_from_name
+                       municipality_from_cadastrial municipality_from_istat
+                       municipalities_from_postal_code
+                       municipalities_from_province_istat
+                       municipalities_from_region_istat
+                       municipalities_from_zone_code].freeze # :nodoc:
+
+    CLASS_METHODS.each do |method|
+      define_singleton_method method do |message|
+        Search.new(message).send(method)
+      end
+    end # :nodoc:
+
+    attr_accessor :term # :nodoc:
+
+    def initialize(term) # :nodoc:
+      @term = term.to_s.strip
+    end
+
+    protected
+
+    # returns a +Municipitaly::Zone+ object from a <b>zone code</b> term
+    #
+    # example usage:
+    #   zone = Search.zone_from_code('4')
+    def zone_from_code # :doc:
+      data.zones.find do |z|
+        z.code == term
+      end
+    end
+
+    # returns a +Municipitaly::Region+ object from a <b>region istat</b> term
+    #
+    # example usage:
+    #   region = Search.region_from_istat('15')
+    def region_from_istat # :doc:
+      data.regions.find do |r|
+        r.istat == term
+      end
+    end
+
+    # returns an array of +Municipitaly::Region+ objects from a <b>zone
+    # code</b> term
+    #
+    # example usage:
+    #   regions = Search.regions_from_zone_code('3')
+    def regions_from_zone_code # :doc:
+      data.regions.select do |r|
+        r.zone_code == term
+      end
+    end
+
+    # returns a +Municipitaly::Province+ object from a <b>province istat</b>
+    # term
+    #
+    # example usage:
+    #   province = Search.province_from_istat('061')
+    def province_from_istat # :doc:
+      data.provinces.find do |p|
+        p.istat == term
+      end
+    end
+
+    # returns a +Municipitaly::Province+ object from a <b>province acronym</b>
+    # term
+    #
+    # example usage:
+    #   province = Search.province_from_acronym('MI')
+    def province_from_acronym # :doc:
+      data.provinces.find do |p|
+        p.acronym == term
+      end
+    end
+
+    # returns an array of +Municipitaly::Province+ objects from a <b>region
+    # istat</b> term
+    #
+    # example usage:
+    #   provinces = Search.provinces_from_region_istat('05')
+    def provinces_from_region_istat # :doc:
+      data.provinces.select do |p|
+        p.region_istat == term
+      end
+    end
+
+    # returns an array of +Municipitaly::Province+ objects from a <b>zone
+    # code</b> term
+    #
+    # example usage:
+    #   provinces = Search.provinces_from_zone_code('5')
+    def provinces_from_zone_code # :doc:
+      region_istats = regions_from_zone_code.map(&:istat)
+      data.provinces.select do |p|
+        region_istats.include? p.region_istat
+      end
+    end
+
+    # returns an array of +Municipitaly::Municipality+ objects from a
+    # <b>municipality name</b> term.
+    # Term can be a partial string and is case insensitive.
+    #
+    # example usage:
+    #   municipalities = Search.municipalities_from_name('monte')
+    def municipalities_from_name # :doc:
+      data.municipalities.select do |m|
+        m.name =~ Regexp.new(term, true)
+      end
+    end
+
+    # returns a +Municipitaly::Municipality+ object from a <b>cadastrial
+    # code</b> term
+    #
+    # example usage:
+    #   municipality = Search.municipality_from_cadastrial('D791')
+    def municipality_from_cadastrial # :doc:
+      data.municipalities.find do |m|
+        m.cadastrial_code == term.upcase
+      end
+    end
+
+    # returns a +Municipitaly::Municipality+ object from a <b>municipality
+    # istat</b> term
+    #
+    # example usage:
+    #   municipality = Search.municipality_from_istat('066032')
+    def municipality_from_istat # :doc:
+      province_istat = term.slice!(0...3)
+      partial_istat = term
+      data.municipalities.find do |m|
+        m.province_istat == province_istat && m.partial_istat == partial_istat
+      end
+    end
+
+    # returns an array of +Municipitaly::Municipality+ objects from a
+    # <b>postal code</b> term.
+    #
+    # example usage:
+    #   municipalities = Search.municipalities_from_postal_code('00163')
+    def municipalities_from_postal_code # :doc:
+      data.municipalities.select do |m|
+        m.postal_codes.include? term
+      end
+    end
+
+    # returns an array of +Municipitaly::Municipality+ objects from a
+    # <b>province istat</b> term.
+    #
+    # example usage:
+    #   municipalities = Search.municipalities_from_province_istat('090')
+    def municipalities_from_province_istat # :doc:
+      data.municipalities.select do |m|
+        m.province_istat == term
+      end
+    end
+
+    # returns an array of +Municipitaly::Municipality+ objects from a
+    # <b>region istat</b> term.
+    #
+    # example usage:
+    #   municipalities = Search.municipalities_from_region_istat('13')
+    def municipalities_from_region_istat # :doc:
+      province_istats = provinces_from_region_istat.map(&:istat)
+      municipalities_from_province_istats(province_istats)
+    end
+
+    # returns an array of +Municipitaly::Municipality+ objects from a
+    # <b>zone code</b> term.
+    #
+    # example usage:
+    #   municipalities = Search.municipalities_from_zone_code('3')
+    def municipalities_from_zone_code # :doc:
+      province_istats = provinces_from_zone_code.map(&:istat)
+      municipalities_from_province_istats(province_istats)
+    end
+
+    private
+
+    def municipalities_from_province_istats(istats)
+      data.municipalities.select do |m|
+        istats.include? m.province_istat
+      end
+    end
+  end
+end

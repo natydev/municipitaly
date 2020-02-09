@@ -1,0 +1,107 @@
+# frozen_string_literal: true
+
+require 'municipitaly/municipality'
+
+RSpec.describe Municipitaly::Municipality do
+  let(:subject) do
+    described_class.new(province_istat: '034', name: 'Parma',
+                        partial_istat: '027', cadastrial_code: 'G337',
+                        postal_codes: '43121 43122 43123 43124 43125 43126',
+                        population: '175895')
+  end
+  context 'has following attributes' do
+    it 'province_istat as String' do
+      expect(subject.province_istat).to be_kind_of(String)
+      expect(subject.province_istat).to eq('034')
+    end
+    it 'name as String' do
+      expect(subject.name).to be_kind_of(String)
+      expect(subject.name).to eq('Parma')
+    end
+    it 'partial_istat as String' do
+      expect(subject.partial_istat).to be_kind_of(String)
+      expect(subject.partial_istat).to eq('027')
+    end
+    it 'cadastrial_code as String' do
+      expect(subject.cadastrial_code).to be_kind_of(String)
+      expect(subject.cadastrial_code).to eq('G337')
+    end
+    it 'postal_codes as Array' do
+      expect(subject.postal_codes).to be_kind_of(Array)
+      expect(subject.postal_codes)
+        .to eq(%w[43121 43122 43123 43124 43125 43126])
+    end
+    it 'population as Integer' do
+      expect(subject.population).to be_kind_of(Integer)
+      expect(subject.population).to eq(175_895)
+    end
+  end
+  context 'istat' do
+    it 'is composed by province_istat + partial_istat' do
+      expect(subject.istat)
+        .to eq(subject.province_istat + subject.partial_istat)
+    end
+  end
+  context '.all' do
+    it 'returns array of all municipalities' do
+      expect(described_class.all).to be_kind_of(Array)
+      expect(described_class.all.first)
+        .to be_kind_of(Municipitaly::Municipality)
+      expect(described_class.all.size).to eq(7914)
+    end
+  end
+  context 'province' do
+    it 'return the belongs province' do
+      expect(subject.province)
+        .to be_kind_of(Municipitaly::Province)
+      expect(subject.province.name)
+        .to eq('Parma')
+    end
+  end
+  context 'province_acronym' do
+    it 'delegate to province#acronym' do
+      expect(subject.province_acronym)
+        .to eq('PR')
+    end
+  end
+  context 'region' do
+    it 'return the belongs region' do
+      expect(subject.region)
+        .to be_kind_of(Municipitaly::Region)
+      expect(subject.region.name)
+        .to eq('Emilia-Romagna')
+    end
+  end
+  context 'region_name' do
+    it 'delegate to region#name' do
+      expect(subject.region_name)
+        .to eq('Emilia-Romagna')
+    end
+  end
+  context 'region_istat' do
+    it 'delegate to region#name' do
+      expect(subject.region_istat)
+        .to eq('08')
+    end
+  end
+  context 'zone' do
+    it 'return the belongs zone' do
+      expect(subject.zone)
+        .to be_kind_of(Municipitaly::Zone)
+      expect(subject.zone.name)
+        .to eq('Nord-est')
+    end
+  end
+  context 'zone_code' do
+    it 'delegate to region#zone_code' do
+      expect(subject.zone_code)
+        .to eq(subject.region.zone_code)
+    end
+  end
+  context 'zone_name' do
+    it 'delegate to zone#name' do
+      expect(subject.zone_name)
+        .to eq('Nord-est')
+    end
+  end
+end

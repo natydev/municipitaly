@@ -1,0 +1,21 @@
+zone_code,name,istat
+1,Piemonte,01
+1,Valle d'Aosta/Vallée d'Aoste,02
+1,Liguria,07
+1,Lombardia,03
+2,Trentino-Alto Adige/Südtirol,04
+2,Veneto,05
+2,Friuli-Venezia Giulia,06
+2,Emilia-Romagna,08
+3,Marche,11
+3,Toscana,09
+3,Umbria,10
+3,Lazio,12
+4,Campania,15
+4,Abruzzo,13
+4,Molise,14
+4,Puglia,16
+4,Basilicata,17
+4,Calabria,18
+5,Sicilia,19
+5,Sardegna,20
