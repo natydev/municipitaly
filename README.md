@@ -55,6 +55,9 @@ Returned data are stored in 4 different types of entity models:
 Retrieve all zones (return an array of `Municipitaly::Zone` objects):
 
 ```ruby
+# inside an irb or rails console:
+require 'municipitaly'
+
 zones = Municipitaly::Zone.all
 # => [#<Municipitaly::Zone:0x0000...] 
 ```
@@ -69,6 +72,7 @@ retrive data zone:
 ```ruby
 zone.name
 # => "Centro"
+
 zone.code
 # => "3" 
 ```
@@ -179,7 +183,7 @@ If you want to contribute keep these guidelines in mind:
 Steps to submit your code:
 
 1. Fork the repo.
-2. Oper your feature/namespaced branch
+2. Open your feature/namespaced branch
 3. Commit your code following Github guidelines.
 4. Make a PR with an exhaustive description.
 
