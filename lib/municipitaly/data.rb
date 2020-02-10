@@ -53,7 +53,7 @@ module Municipitaly
 
     def find_csv(file)
       File.expand_path(File.join(File.dirname(__FILE__),
-        "../../vendor/data/#{file}"))
+                                 "../../vendor/data/#{file}"))
     end
   end
 end

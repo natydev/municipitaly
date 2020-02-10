@@ -4,6 +4,9 @@ Metrics/BlockLength:
     - 'municipitaly.gemspec'
     - 'lib/**/*.rb'
     - 'spec/**/*.rb'
+Metrics/ClassLength:
+  Exclude:
+    - 'lib/municipitaly/search.rb'
 
 Metrics/ParameterLists:
   Max: 10

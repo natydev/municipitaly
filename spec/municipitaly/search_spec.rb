@@ -165,6 +165,25 @@ RSpec.describe Municipitaly::Search do
           .to be_empty
       end
     end
+    context 'greedy param' do
+      context 'when is false' do
+        it 'return only municipality having exact term name' do
+          expect(described_class
+                 .municipalities_from_name('Gragnano', greedy: false).size)
+            .to eq(1)
+        end
+      end
+      context 'when is not provided or true' do
+        it 'return all municipalities having partial term name' do
+          expect(described_class
+                 .municipalities_from_name('Gragnano').size)
+            .to eq(2)
+          expect(described_class
+                 .municipalities_from_name('Gragnano', greedy: true).size)
+            .to eq(2)
+        end
+      end
+    end
   end
 
   context '.municipality_from_cadastrial' do

@@ -26,15 +26,16 @@ module Municipitaly
                        municipalities_from_zone_code].freeze # :nodoc:
 
     CLASS_METHODS.each do |method|
-      define_singleton_method method do |message|
-        Search.new(message).send(method)
+      define_singleton_method method do |message, opts = {}|
+        Search.new(message, opts).send(method)
       end
     end # :nodoc:
 
-    attr_accessor :term # :nodoc:
+    attr_accessor :term, :opts # :nodoc:
 
-    def initialize(term) # :nodoc:
+    def initialize(term, opts = {}) # :nodoc:
       @term = term.to_s.strip
+      @opts = opts
     end
 
     protected
@@ -117,13 +118,22 @@ module Municipitaly
 
     # returns an array of +Municipitaly::Municipality+ objects from a
     # <b>municipality name</b> term.
-    # Term can be a partial string and is case insensitive.
+    # Term can be a partial string and is case insensitive.  
+    # The optional parameter +greedy+ [boolean] permit to serch exact term
+    # name (if false) or partial word (true by default).
     #
     # example usage:
     #   municipalities = Search.municipalities_from_name('monte')
+    #   municipalities = Search.municipalities_from_name('monte', greedy: false)
     def municipalities_from_name # :doc:
+      greedy = opts.fetch(:greedy, true)
+      regexp = if greedy
+                 Regexp.new(term, true)
+               else
+                 Regexp.new("^#{term}$", true)
+               end
       data.municipalities.select do |m|
-        m.name =~ Regexp.new(term, true)
+        m.name =~ regexp
       end
     end
 
