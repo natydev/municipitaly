@@ -47,7 +47,7 @@ RSpec.describe Municipitaly::Municipality do
       expect(described_class.all).to be_kind_of(Array)
       expect(described_class.all.first)
         .to be_kind_of(Municipitaly::Municipality)
-      expect(described_class.all.size).to eq(7914)
+      expect(described_class.all.size).to eq(7904)
     end
   end
   context 'province' do

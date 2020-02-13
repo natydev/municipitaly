@@ -3,7 +3,7 @@
 
 This gem provide various data about 🇮🇹 Italian subdivisions and municipalities. As well the entire updated list of provinces, regions and municipalities names, it provide useful codes (📯 postal code(s), 🌐 [ISTAT](https://www.istat.it/en/) codes, cadastrial code, population, ...).
 
-## Installation
+## 💾 Installation
 
 Add this line to your application's Gemfile:
 
@@ -19,7 +19,7 @@ Or install it yourself as:
 
     $ gem install municipitaly
 
-## Scenic
+## 👁 Scenic
 
 These entities are present, subpoints are data attributes:
 
@@ -41,7 +41,7 @@ These entities are present, subpoints are data attributes:
     * population
 
 
-## Usage and examples
+## 🛠 Usage and examples
 
 
 The **Municipitaly::Search** is the principal class used to search entities.  
@@ -167,7 +167,11 @@ Complete list of available class and instance methods are documented inside code
 Clone locally this repository and run
 `bundle exec rdoc` to produce complete documentation inside your local directory.
 
-## Contributing
+## 🗄 Changelog
+
+Complete list in [this section](CHANGELOG.md)
+
+## 🤝 Contributing
 
 Fells free to improve or suggest new features/ideas.
 Bug reports and pull requests are welcome on GitHub at https://github.com/natydev/municipitaly. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
@@ -187,6 +191,6 @@ Steps to submit your code:
 3. Commit your code following Github guidelines.
 4. Make a PR with an exhaustive description.
 
-## License
+## 📃 License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

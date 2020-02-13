@@ -887,7 +887,7 @@ province_istat,name,partial_istat,cadastrial_code,postal_codes,population
 006,Casasco,041,B941,15050,124
 006,Cassine,043,C027,15016,3048
 006,Cassinelle,044,C030,15070,937
-006,Castellania,045,C137,15051,91
+006,Castellania Coppi,045,C137,15051,91
 006,Castellar Guidobono,046,C142,15050,427
 006,Castellazzo Bormida,047,C148,15073,4566
 006,Castelletto d'Erro,048,C156,15010,150
@@ -2235,7 +2235,7 @@ province_istat,name,partial_istat,cadastrial_code,postal_codes,population
 017,Prevalle,155,H055,25080,6816
 017,Provaglio d'Iseo,156,H078,25050,7136
 017,Provaglio Val Sabbia,157,H077,25070,966
-017,Puegnago sul Garda,158,H086,25080,3263
+017,Puegnago del Garda,158,H086,25080,3263
 017,Quinzano d'Oglio,159,H140,25027,6390
 017,Remedello,160,H230,25010,3387
 017,Rezzato,161,H256,25086,12933
@@ -2779,9 +2779,7 @@ province_istat,name,partial_istat,cadastrial_code,postal_codes,population
 022,Borgo Valsugana,022,B006,38051,6826
 022,Brentonico,025,B153,38060,3882
 022,Bresimo,026,B158,38020,254
-022,Brez,027,B165,38021,706
 022,Caderzone Terme,029,B335,38080,669
-022,Cagnò,030,B360,38028,360
 022,Calceranica al Lago,032,B389,38050,1305
 022,Caldes,033,B400,38022,1090
 022,Caldonazzo,034,B404,38052,3340
@@ -2791,11 +2789,9 @@ province_istat,name,partial_istat,cadastrial_code,postal_codes,population
 022,Canal San Bovo,038,B577,38050,1592
 022,Canazei,039,B579,38032,1907
 022,Capriana,040,B697,38030,605
-022,Carano,041,B723,38033,1073
 022,Carisolo,042,B783,38080,984
 022,Carzano,043,B856,38050,505
 022,Castel Condino,045,C183,38082,238
-022,Castelfondo,046,C103,38020,632
 022,Castello-Molina di Fiemme,047,C189,38030,2267
 022,Castello Tesino,048,C194,38053,1315
 022,Castelnuovo,049,C216,38050,1035
@@ -2809,20 +2805,16 @@ province_istat,name,partial_istat,cadastrial_code,postal_codes,population
 022,Cis,060,C727,38020,309
 022,Civezzano,061,C756,38045,3904
 022,Cles,062,C794,38023,6769
-022,Cloz,063,C797,38020,729
 022,Commezzadura,064,C931,38020,993
 022,Croviana,068,D188,38027,693
-022,Daiano,070,D243,38030,692
 022,Dambel,071,D246,38010,435
 022,Denno,074,D273,38010,1252
 022,Drena,078,D365,38074,551
 022,Dro,079,D371,38074,4566
-022,Faedo,080,D457,38010,610
 022,Fai della Paganella,081,D468,38010,898
 022,Fiavè,083,D565,38075,1098
 022,Fierozzo,085,D573,38050,481
 022,Folgaria,087,D651,38064,3130
-022,Fondo,088,D663,38013,1435
 022,Fornace,089,D714,38040,1321
 022,Frassilongo,090,D775,38050,321
 022,Garniga Terme,091,D928,38060,381
@@ -2838,7 +2830,6 @@ province_istat,name,partial_istat,cadastrial_code,postal_codes,population
 022,Lona-Lases,108,E664,38040,876
 022,Luserna,109,E757,38040,279
 022,Malé,110,E850,38027,2135
-022,Malosco,111,E866,38013,445
 022,Massimeno,112,F045,38086,124
 022,Mazzin,113,F068,38030,494
 022,Mezzana,114,F168,38020,884
@@ -2866,9 +2857,7 @@ province_istat,name,partial_istat,cadastrial_code,postal_codes,population
 022,Pomarolo,144,G808,38060,2355
 022,Predazzo,147,H018,38037,4531
 022,Rabbi,150,H146,38020,1400
-022,Revò,152,H254,38028,1265
 022,Riva del Garda,153,H330,38066,15838
-022,Romallo,154,H506,38028,604
 022,Romeno,155,H517,38010,1374
 022,Roncegno Terme,156,H528,38050,2814
 022,Ronchi Valsugana,157,H532,38050,421
@@ -2879,7 +2868,7 @@ province_istat,name,partial_istat,cadastrial_code,postal_codes,population
 022,Rumo,163,H639,38020,822
 022,Sagron Mis,164,H666,38050,183
 022,Samone,165,H754,38059,544
-022,San Michele all'Adige,167,I042,38010,2911
+022,San Michele all'Adige,167,I042,38010,3521
 022,Sant'Orsola Terme,168,I354,38050,1073
 022,Sanzeno,169,I411,38010,928
 022,Sarnonico,170,I439,38011,749
@@ -2908,7 +2897,6 @@ province_istat,name,partial_istat,cadastrial_code,postal_codes,population
 022,Trento,205,L378,38121 38122 38123,114198
 022,Valfloriana,209,L575,38040,530
 022,Vallarsa,210,L588,38060,1343
-022,Varena,211,L678,38030,845
 022,Vermiglio,213,L769,38029,1869
 022,Vignola-Falesina,216,L886,38057,162
 022,Villa Lagarina,222,L957,38060,3692
@@ -2938,6 +2926,9 @@ province_istat,name,partial_istat,cadastrial_code,postal_codes,population
 022,Ville d'Anaunia,249,M363,38019,4902
 022,San Giovanni di Fassa,250,M390,38036,3345
 022,Terre d'Adige,251,M407,38097,3011
+022,Borgo d'Anaunia,252,M429,38013 38020,2512
+022,Novella,253,M430,38021 38028 38020,3664
+022,Ville di Fiemme,254,M431,38033 38030,2610
 023,Affi,001,A061,37010,2297
 023,Albaredo d'Adige,002,A137,37041,5232
 023,Angiari,003,A292,37050,2164
@@ -7380,7 +7371,7 @@ province_istat,name,partial_istat,cadastrial_code,postal_codes,population
 097,Barzago,005,A683,23890,2577
 097,Barzanò,006,A686,23891,5171
 097,Barzio,007,A687,23816,1297
-097,Bellano,008,A745,23822,3264
+097,Bellano,008,A745,23822,3583
 097,Bosisio Parini,009,B081,23842,3504
 097,Brivio,010,B194,23883,4686
 097,Bulciago,011,B261,23892,2948
@@ -7452,7 +7443,6 @@ province_istat,name,partial_istat,cadastrial_code,postal_codes,population
 097,Valgreghentino,082,L581,23857,3410
 097,Valmadrera,083,L634,23868,11612
 097,Varenna,084,L680,23829,765
-097,Vendrogno,085,L731,23838,319
 097,Vercurago,086,L751,23808,2833
 097,Viganò,090,L866,23897,2012
 097,Verderio,091,M337,23879,5659
