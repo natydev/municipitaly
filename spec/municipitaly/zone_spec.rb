@@ -16,6 +16,13 @@ RSpec.describe Municipitaly::Zone do
       expect(subject.code).to eq('3')
     end
   end
+  context '.all' do
+    it 'returns array of all zones' do
+      expect(described_class.all).to be_kind_of(Array)
+      expect(described_class.all.first).to be_kind_of(Municipitaly::Zone)
+      expect(described_class.all.size).to eq(5)
+    end
+  end
   context 'regions' do
     it 'returns all regions belongs current zone' do
       expect(subject.regions).to be_kind_of(Array)

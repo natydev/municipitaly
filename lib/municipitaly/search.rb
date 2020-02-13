@@ -118,7 +118,7 @@ module Municipitaly
 
     # returns an array of +Municipitaly::Municipality+ objects from a
     # <b>municipality name</b> term.
-    # Term can be a partial string and is case insensitive.  
+    # Term can be a partial string and is case insensitive.
     # The optional parameter +greedy+ [boolean] permit to serch exact term
     # name (if false) or partial word (true by default).
     #
