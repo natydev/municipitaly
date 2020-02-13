@@ -1,6 +1,10 @@
 
 # 🇮🇹 Municipitaly
 
+[![Build Status](https://travis-ci.org/natydev/municipitaly.png?branch=master)](https://travis-ci.org/natydev/municipitaly)
+[![Maintainability](https://api.codeclimate.com/v1/badges/07a4926100e3df1cdd72/maintainability)](https://codeclimate.com/github/natydev/municipitaly/maintainability)
+[![Gem Version](https://badge.fury.io/rb/municipitaly.svg)](https://badge.fury.io/rb/municipitaly)
+
 This gem provide various data about 🇮🇹 Italian subdivisions and municipalities. As well the entire updated list of provinces, regions and municipalities names, it provide useful codes (📯 postal code(s), 🌐 [ISTAT](https://www.istat.it/en/) codes, cadastrial code, population, ...).
 
 ## 💾 Installation
