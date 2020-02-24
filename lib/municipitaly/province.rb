@@ -27,5 +27,13 @@ module Municipitaly
     def municipalities
       @municipalities ||= Search.municipalities_from_province_istat(istat)
     end
+
+    # returns ISO 3166-2 code for current province.
+    def iso3166_2
+      "IT-#{acronym}"
+    end
+
+    alias_method :iso3166, :iso3166_2
+    
   end
 end

@@ -24,6 +24,14 @@ RSpec.describe Municipitaly::Province do
       expect(subject.acronym).to be_kind_of(String)
       expect(subject.acronym).to eq('TO')
     end
+    it 'iso3166_2' do
+      expect(subject.iso3166_2).to be_kind_of(String)
+      expect(subject.iso3166_2).to eq('IT-TO')
+    end
+    it 'alias iso3166 to iso3166_2' do
+      expect(subject.iso3166).to be_kind_of(String)
+      expect(subject.iso3166).to eq('IT-TO')
+    end
   end
   context '.all' do
     it 'returns array of all provinces' do
