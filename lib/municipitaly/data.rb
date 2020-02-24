@@ -9,7 +9,6 @@ module Municipitaly
     @@municipalities = []
 
     def zones
-      puts find_csv('zones.csv')
       if @@zones.empty?
         CSV.foreach(find_csv('zones.csv'), headers: true) do |row|
           @@zones << Zone.new(name: row[0], code: row[1])
