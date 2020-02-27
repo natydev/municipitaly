@@ -33,7 +33,6 @@ module Municipitaly
       "IT-#{acronym}"
     end
 
-    alias_method :iso3166, :iso3166_2
-    
+    alias iso3166 iso3166_2
   end
 end

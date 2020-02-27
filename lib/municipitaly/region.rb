@@ -6,13 +6,14 @@ module Municipitaly
     include DataCaller
     include ZoneDelegator
 
-    def initialize(zone_code:, name:, istat:)
+    def initialize(zone_code:, name:, istat:, partial_iso3166:)
       @zone_code = zone_code
       @name = name
       @istat = istat
+      @partial_iso3166 = partial_iso3166
     end
 
-    attr_reader :zone_code, :name, :istat
+    attr_reader :zone_code, :name, :istat, :partial_iso3166
 
     # returns an array of all +Municipitaly::Region+ objects.
     def self.all
@@ -30,5 +31,12 @@ module Municipitaly
     def municipalities
       @municipalities ||= Search.municipalities_from_region_istat(istat)
     end
+
+    # returns ISO 3166-2 code for current province.
+    def iso3166_2
+      "IT-#{partial_iso3166}"
+    end
+
+    alias iso3166 iso3166_2
   end
 end

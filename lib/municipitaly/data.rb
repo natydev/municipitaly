@@ -21,7 +21,7 @@ module Municipitaly
       if @@regions.empty?
         CSV.foreach(find_csv('regions.csv'), headers: true) do |row|
           @@regions << Region.new(zone_code: row[0], name: row[1],
-                                  istat: row[2])
+                                  istat: row[2], partial_iso3166: row[3])
         end
       end
       @@regions
