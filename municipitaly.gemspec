@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = 'Municipitaly'
   spec.description   = 'Codes (postal, istat, cadastrian, ...) about Italian ' \
-                       'subdivisions and municipalities'
+                       'subdivisions and municipalities in Italy [city, cities]'
   spec.homepage      = 'https://github.com/natydev/municipitaly'
   spec.license       = 'MIT'
   spec.metadata = {
