@@ -60,6 +60,35 @@ RSpec.describe Municipitaly::Search do
     end
   end
 
+  context '.province_from_name' do
+    context 'with an existant param province name' do
+      it 'returns a Province object' do
+        expect(described_class.province_from_name('aosta').acronym)
+          .to eq('AO')
+        expect(described_class.province_from_name("valle d' aosta").acronym)
+          .to eq('AO')
+        expect(described_class.province_from_name('Milan').acronym)
+          .to eq('MI')
+        expect(described_class.province_from_name('Brianza').acronym)
+          .to eq('MB')
+        expect(described_class.province_from_name('aquila').acronym)
+          .to eq('AQ')
+        expect(described_class.province_from_name('Massa').acronym)
+          .to eq('MS')
+        expect(described_class.province_from_name('emilia').acronym)
+          .to eq('RE')
+        expect(described_class.province_from_name('basso').acronym)
+          .to eq('CB')
+      end
+    end
+    context 'with nonexistent param province istat' do
+      it 'returns nil' do
+        expect(described_class.province_from_istat('a54'))
+          .to be_nil
+      end
+    end
+  end
+
   context '.province_from_istat' do
     context 'with an existant param province istat' do
       it 'returns a Province object' do
