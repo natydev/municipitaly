@@ -2,8 +2,8 @@
 os: linux
 language: ruby
 rvm:
-  - 2.6.5
-before_install: gem install bundler -v 2.1.4
+  - 3.3.0
+before_install: gem install bundler -v 2.5.11
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter

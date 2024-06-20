@@ -42,7 +42,7 @@ RSpec.describe Municipitaly::Zone do
       expect(subject.municipalities).to be_kind_of(Array)
       expect(subject.municipalities.first)
         .to be_kind_of(Municipitaly::Municipality)
-      expect(subject.municipalities.size).to eq(971)
+      expect(subject.municipalities.size).to eq(968)
     end
   end
 end

@@ -44,7 +44,8 @@ module Municipitaly
             Municipality.new(province_istat: row[0],
                              name: row[1], partial_istat: row[2],
                              cadastrial_code: row[3], postal_codes: row[4],
-                             population: row[5])
+                             population: row[5], area: row[6],
+                             latitude: row[7], longitude: row[8])
         end
       end
       @@municipalities

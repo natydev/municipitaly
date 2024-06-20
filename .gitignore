@@ -6,6 +6,10 @@
 /pkg/
 /spec/reports/
 /tmp/
+/vendor/bundle/
+
+/tools/data/*
+!/tools/data/.keep
 
 # rspec failure tracking
 .rspec_status

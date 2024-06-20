@@ -9,13 +9,17 @@ module Municipitaly
     include ZoneDelegator
 
     def initialize(province_istat:, name:, partial_istat:,
-                   cadastrial_code:, postal_codes:, population:) # :nodoc:
+                   cadastrial_code:, postal_codes:, population:,
+                   area:, latitude:, longitude:) # :nodoc:
       @province_istat = province_istat
       @name = name
       @partial_istat = partial_istat
       @cadastrial_code = cadastrial_code
-      @postal_codes = postal_codes.split(' ')
+      @postal_codes = postal_codes.split
       @population = population.to_i
+      @area = area.to_f
+      @latitude = latitude.to_f
+      @longitude = longitude.to_f
     end
 
     # <b>istat code</b> relative to parent province (String)
@@ -34,6 +38,15 @@ module Municipitaly
 
     # total <b>population</b> of municipality (Integer)
     attr_reader :population
+
+    # total <b>area</b> of municipality (Float)
+    attr_reader :area
+
+    # total <b>population</b> of municipality (Float)
+    attr_reader :latitude
+
+    # total <b>population</b> of municipality (Float)
+    attr_reader :longitude
 
     def_delegator :province, :acronym, :province_acronym
     def_delegator :province, :name, :province_name

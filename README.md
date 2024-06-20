@@ -1,4 +1,3 @@
-
 # 🇮🇹 Municipitaly
 
 [![Build Status](https://travis-ci.org/natydev/municipitaly.png?branch=master)](https://travis-ci.org/natydev/municipitaly)
@@ -13,41 +12,38 @@ This gem provide various data about 🇮🇹 Italian subdivisions and municipali
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'municipitaly'
+gem 'municipitaly', git: 'https://github.com/yupswing/municipitaly.git', branch: 'master'
 ```
 
 And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install municipitaly
-
 ## 👁 Scenic
 
 These entities are present, subpoints are data attributes:
 
-* **Zone** - NUTS 1 (it: *Zona/Ripartizione geografica*)
-    * name
-    * code (it: *codice zona*)
-* **Region** - NUTS 2 (it: *Regione*)
-    * name
-    * ISTAT code (it: *codice istat*)
-* **Province** - NUTS 3 (it: *Provincia*)
-    * name
-    * ISTAT code (it: *codice istat*)
-    * acronym (it: *sigla*)
-* **Municipality** (it: *Comune*)
-    * name
-    * ISTAT code (it: *codice istat*)
-    * cadastrial code (it: *codice catastale*)
-    * postal code(s) (it: *codice/i postale/i*)
-    * population
-
+- **Zone** - NUTS 1 (it: _Zona/Ripartizione geografica_)
+  - name
+  - code (it: _codice zona_)
+- **Region** - NUTS 2 (it: _Regione_)
+  - name
+  - ISTAT code (it: _codice istat_)
+- **Province** - NUTS 3 (it: _Provincia_)
+  - name
+  - ISTAT code (it: _codice istat_)
+  - acronym (it: _sigla_)
+- **Municipality** (it: _Comune_)
+  - name
+  - ISTAT code (it: _codice istat_)
+  - cadastrial code (it: _codice catastale_)
+  - postal code(s) (it: _codice/i postale/i_)
+  - population
+  - area (square km)
+  - latitude
+  - longitude
 
 ## 🛠 Usage and examples
-
 
 The **Municipitaly::Search** is the principal class used to search entities.  
 Returned data are stored in 4 different types of entity models:
@@ -64,14 +60,16 @@ Retrieve all zones (return an array of `Municipitaly::Zone` objects):
 require 'municipitaly'
 
 zones = Municipitaly::Zone.all
-# => [#<Municipitaly::Zone:0x0000...] 
+# => [#<Municipitaly::Zone:0x0000...]
 ```
+
 pick a random zone:
 
 ```ruby
 zone = zones.sample
 # => #<Municipitaly::Zone:0x00007fb8390b9f48 @name="Centro", @code="3">
 ```
+
 retrive data zone:
 
 ```ruby
@@ -79,7 +77,7 @@ zone.name
 # => "Centro"
 
 zone.code
-# => "3" 
+# => "3"
 ```
 
 all regions belongs to a zone (return an array of `Municipitaly::Region` objects):
@@ -107,16 +105,45 @@ Search municipalities **from its name**: is case insensitive and can be partial 
 
 ```ruby
 municipalities = Municipitaly::Search.municipalities_from_name('ricco')
-# => [#<Municipitaly::Municipality:0x00007fb839184838 @province_istat="028", @name="Borgoricco", @partial_istat="013", @cadastrial_code="B031", @postal_codes=["35010"], @population=8478>] 
+# => [#<Municipitaly::Municipality:0x00007d6f8c10e428
+#       @area=26.2065,
+#       @cadastrial_code="I640",
+#       @latitude=44.5078406,
+#       @longitude=8.936045,
+#       @name="Serra Riccò",
+#       @partial_istat="058",
+#       @population=7615,
+#       @postal_codes=["16010"],
+#       @province_istat="010">,
+#     #<Municipitaly::Municipality:0x00007d6f8c106048
+#       @area=37.7634,
+#       @cadastrial_code="H275",
+#       @latitude=44.1555442,
+#       @longitude=9.7634234,
+#       @name="Riccò del Golfo di Spezia",
+#       @partial_istat="023",
+#       @population=3615,
+#       @postal_codes=["19020"],
+#       @province_istat="011">,
+#     #<Municipitaly::Municipality:0x00007d6f8c233a38
+#       @area=20.3924,
+#       @cadastrial_code="B031",
+#       @latitude=45.5328242,
+#       @longitude=11.9685041,
+#       @name="Borgoricco",
+#       @partial_istat="013",
+#       @population=8906,
+#       @postal_codes=["35010"],
+#       @province_istat="028">]
 
 municipality = municipalities.first
 # => #<Municipitaly::Municipality:0x00007fb83918483..>
 
 municipality.name
-# => "Borgoricco"
+# => "Serra Riccò"
 
 municipality.postal_codes
-# => ["35010"]
+# => ["16010"]
 ```
 
 from an entity object is possible to retrieve other parent objects and its attributes:
@@ -166,7 +193,6 @@ florence.postal_codes
 
 Complete list of available class and instance methods are documented inside code, is suggested to use `rdoc`, read at next point.
 
-
 ### 📖 Rdoc
 
 Clone locally this repository and run
@@ -183,11 +209,11 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/natyde
 
 If you want to contribute keep these guidelines in mind:
 
-* Despite is an Italy focused gem, I accept only PR, issues and messages **in English** lang.
-* Code must be well formatted and **offences free**, use the provided `rubocop` gem.
-* Use the same **coding conventions** as the rest of the project.
-* Code must be **tested** (with rspec).
-* Write code according to **SOLID** Principles.
+- Despite is an Italy focused gem, I accept only PR, issues and messages **in English** lang.
+- Code must be well formatted and **offences free**, use the provided `rubocop` gem.
+- Use the same **coding conventions** as the rest of the project.
+- Code must be **tested** (with rspec).
+- Write code according to **SOLID** Principles.
 
 Steps to submit your code:
 
@@ -199,3 +225,8 @@ Steps to submit your code:
 ## 📃 License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+## Data sources
+
+- [Database dei comuni italiani by Garda Informatica](https://www.gardainformatica.it/database-comuni-italiani) (MIT Licence)
+- [Dati censimento 2021 - Ministero dell'Interno](https://dait.interno.gov.it/territorio-e-autonomie-locali/sut/elenco_cens_var_comuni_italiani.php) (Public)

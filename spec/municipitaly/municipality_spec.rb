@@ -7,7 +7,8 @@ RSpec.describe Municipitaly::Municipality do
     described_class.new(province_istat: '034', name: 'Parma',
                         partial_istat: '027', cadastrial_code: 'G337',
                         postal_codes: '43121 43122 43123 43124 43125 43126',
-                        population: '175895')
+                        population: '195436', area: '260.5978',
+                        latitude: '44.8010694', longitude: '10.3283497')
   end
   context 'has following attributes' do
     it 'province_istat as String' do
@@ -33,7 +34,19 @@ RSpec.describe Municipitaly::Municipality do
     end
     it 'population as Integer' do
       expect(subject.population).to be_kind_of(Integer)
-      expect(subject.population).to eq(175_895)
+      expect(subject.population).to eq(195_436)
+    end
+    it 'area as Float' do
+      expect(subject.area).to be_kind_of(Float)
+      expect(subject.area).to eq(260.5978)
+    end
+    it 'latitude as Float' do
+      expect(subject.latitude).to be_kind_of(Float)
+      expect(subject.latitude).to eq(44.8010694)
+    end
+    it 'longitude as Float' do
+      expect(subject.longitude).to be_kind_of(Float)
+      expect(subject.longitude).to eq(10.3283497)
     end
   end
   context 'istat' do
@@ -47,7 +60,7 @@ RSpec.describe Municipitaly::Municipality do
       expect(described_class.all).to be_kind_of(Array)
       expect(described_class.all.first)
         .to be_kind_of(Municipitaly::Municipality)
-      expect(described_class.all.size).to eq(7904)
+      expect(described_class.all.size).to eq(7896) # 2024-05-27
     end
   end
   context 'province' do

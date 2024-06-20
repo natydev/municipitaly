@@ -87,9 +87,11 @@ module Municipitaly
     #   province = Search.province_from_name('Paler')
     def province_from_name # :doc:
       term_set = Search.sanitize_term(term)
+      return nil if term_set.size < 3
+
       data.provinces.find do |p|
         name_set = Search.sanitize_term(p.name)
-        name_set =~ Regexp.new(term_set) && term_set.size > 3
+        name_set =~ Regexp.new(term_set)
       end
     end
 
@@ -150,6 +152,9 @@ module Municipitaly
     def municipalities_from_name # :doc:
       greedy = opts.fetch(:greedy, true)
       term_set = Search.sanitize_term(term)
+
+      return [] if term_set.size < 3
+
       regexp = if greedy
                  Regexp.new(term_set, true)
                else

@@ -175,7 +175,7 @@ RSpec.describe Municipitaly::Search do
           .to be_kind_of(Municipitaly::Municipality)
         expect(
           described_class.municipalities_from_name('monte').size
-        ).to eq(254)
+        ).to eq(253)
       end
       it 'returns results with case insensitive' do
         expect(described_class.municipalities_from_name('monteforte').size)
@@ -185,7 +185,7 @@ RSpec.describe Municipitaly::Search do
       end
       it 'returns results from partial term' do
         expect(described_class.municipalities_from_name('terme').size)
-          .to eq(46)
+          .to eq(47)
       end
     end
     context 'with nonexistent param name' do
