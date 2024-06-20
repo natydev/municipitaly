@@ -17,4 +17,13 @@ require_relative 'municipitaly/search'
 # top level namespace
 module Municipitaly
   # :nodoc:
+  
+  # returns a sanitized term removing everything except letters to make
+  # matches less prone to errors (case insensitive and accent insensitive)
+  #
+  # example usage:
+  #   sanitized_term = Search.sanitize_term('Forlì Cesena')
+  def self.sanitize_term(term) # :doc:
+    term.strip.downcase.tr('àâçèéêìòôù', 'aaceeeioou').gsub(/[^a-z]/, '')
+  end
 end

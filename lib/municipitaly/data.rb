@@ -42,10 +42,10 @@ module Municipitaly
         CSV.foreach(find_csv('municipalities.csv'), headers: true) do |row|
           @@municipalities <<
             Municipality.new(province_istat: row[0],
-                             name: row[1], partial_istat: row[2],
-                             cadastrial_code: row[3], postal_codes: row[4],
-                             population: row[5], area: row[6],
-                             latitude: row[7], longitude: row[8])
+                             name: row[1], name_alt: row[2], partial_istat: row[3],
+                             cadastrial_code: row[4], postal_codes: row[5],
+                             population: row[6], area: row[7],
+                             latitude: row[8], longitude: row[9])
         end
       end
       @@municipalities

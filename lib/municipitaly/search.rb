@@ -38,15 +38,6 @@ module Municipitaly
       @opts = opts
     end
 
-    # returns a sanitized term removing everything except letters to make
-    # matches less prone to errors (case insensitive and accent insensitive)
-    #
-    # example usage:
-    #   sanitized_term = Search.sanitize_term('Forlì Cesena')
-    def self.sanitize_term(term) # :doc:
-      term.strip.downcase.tr('àèéìòù', 'aeeiou').gsub(/[^a-z]/, '')
-    end
-
     protected
 
     # returns a +Municipitaly::Zone+ object from a <b>zone code</b> term
@@ -86,11 +77,11 @@ module Municipitaly
     # example usage:
     #   province = Search.province_from_name('Paler')
     def province_from_name # :doc:
-      term_set = Search.sanitize_term(term)
+      term_set = Municipitaly.sanitize_term(term)
       return nil if term_set.size < 3
 
       data.provinces.find do |p|
-        name_set = Search.sanitize_term(p.name)
+        name_set = Municipitaly.sanitize_term(p.name)
         name_set =~ Regexp.new(term_set)
       end
     end
@@ -151,7 +142,7 @@ module Municipitaly
     #   municipalities = Search.municipalities_from_name('monte', greedy: false)
     def municipalities_from_name # :doc:
       greedy = opts.fetch(:greedy, true)
-      term_set = Search.sanitize_term(term)
+      term_set = Municipitaly.sanitize_term(term)
 
       return [] if term_set.size < 3
 
@@ -161,8 +152,7 @@ module Municipitaly
                  Regexp.new("^#{term_set}$", true)
                end
       data.municipalities.select do |m|
-        name_set = Search.sanitize_term(m.name)
-        name_set =~ regexp
+        Municipitaly.sanitize_term(m.name) =~ regexp || (m.name_alt && Municipitaly.sanitize_term(m.name_alt) =~ regexp)
       end
     end
 

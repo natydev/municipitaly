@@ -35,6 +35,8 @@ These entities are present, subpoints are data attributes:
   - acronym (it: _sigla_)
 - **Municipality** (it: _Comune_)
   - name
+  - name_alt (alternative name)
+  - name_full (composite of name + name_alt if present)
   - ISTAT code (it: _codice istat_)
   - cadastrial code (it: _codice catastale_)
   - postal code(s) (it: _codice/i postale/i_)

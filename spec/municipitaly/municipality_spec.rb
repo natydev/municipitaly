@@ -4,7 +4,7 @@ require 'municipitaly/municipality'
 
 RSpec.describe Municipitaly::Municipality do
   let(:subject) do
-    described_class.new(province_istat: '034', name: 'Parma',
+    described_class.new(province_istat: '034', name: 'Parma', name_alt: nil,
                         partial_istat: '027', cadastrial_code: 'G337',
                         postal_codes: '43121 43122 43123 43124 43125 43126',
                         population: '195436', area: '260.5978',

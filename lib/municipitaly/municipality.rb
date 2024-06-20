@@ -8,11 +8,12 @@ module Municipitaly
     include RegionDelegator
     include ZoneDelegator
 
-    def initialize(province_istat:, name:, partial_istat:,
+    def initialize(province_istat:, name:, name_alt:, partial_istat:,
                    cadastrial_code:, postal_codes:, population:,
                    area:, latitude:, longitude:) # :nodoc:
       @province_istat = province_istat
       @name = name
+      @name_alt = name_alt
       @partial_istat = partial_istat
       @cadastrial_code = cadastrial_code
       @postal_codes = postal_codes.split
@@ -27,6 +28,9 @@ module Municipitaly
 
     # <b>name</b> of municipality (String)
     attr_reader :name
+
+    # <b>alternative name</b> of municipality (String)
+    attr_reader :name_alt
 
     attr_reader :partial_istat # :nodoc:
 
@@ -60,6 +64,10 @@ module Municipitaly
     # returns <b>istat code</b> for current municipality.
     def istat
       province_istat + partial_istat
+    end
+
+    def name_full
+      name_alt.nil? ? name : "#{name}/#{name_alt}"
     end
 
     # returns +Municipitaly::Province+ object for current municipality.

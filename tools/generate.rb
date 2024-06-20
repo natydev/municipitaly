@@ -24,6 +24,10 @@ def download_gi
   files = ['gi_province.csv', 'gi_comuni.csv', 'gi_comuni_cap.csv'].map { |f| "/tmp/gi_db_comuni/csv/#{f}" }
 
   `cp #{files.join(' ')} #{fullpath('./data/')}`
+
+  # quick fix Ionadi -> Jonadi
+  `sed -i 's@;Ionadi@;Jonadi@g' #{fullpath('./data/gi_comuni.csv')}`
+  `sed -i 's@;Ionadi@;Jonadi@g' #{fullpath('./data/gi_comuni_cap.csv')}`
 end
 
 def download_istat
@@ -128,10 +132,11 @@ def add_population_to_comuni(comuni)
   skipped = []
   log("Integro dati della popolazione da file 'popolazione.csv'\n")
   CSV.foreach(fullpath('./data/istat_comuni_popolazione.csv'), headers: :first_row, col_sep: ',') do |row|
-    comune_term_istat = row['DESCRIZIONE COMUNE'].downcase.tr('àèéìòù', 'aeeiou').gsub(/[^a-z]/, '')
+    comune_term_istat = row['DESCRIZIONE COMUNE'].split('/').first
+                                                 .downcase.tr('àâçèéêìòôù', 'aaceeeioou').gsub(/[^a-z]/, '')
     comune = comuni_copy.find do |c|
-      comune_term_gi = c['denominazione_ita'].split('/').first.downcase.tr('àèéìòù', 'aeeiou').gsub(/[^a-z]/, '')
-      comune_term_istat =~ Regexp.new(comune_term_gi)
+      comune_term_gi = c['denominazione_ita'].downcase.tr('àâçèéêìòôù', 'aaceeeioou').gsub(/[^a-z]/, '')
+      row['SIGLA'] == c['sigla_provincia'] && comune_term_istat == comune_term_gi
     end
     if comune
       comune['popolazione'] = row['POPOLAZIONE CENSITA TOTALE'].gsub('.', '').to_i
@@ -143,6 +148,16 @@ def add_population_to_comuni(comuni)
     counter += 1
   end
   log("Integrati #{counter} su #{comuni.count} comuni (#{skipped.count} saltati)\n", clear: true, end_block: true)
+  pp skipped
+end
+
+def find_comune(comuni, text)
+  comune_term_istat = text.downcase.tr('àâçèéêìòôù', 'aaceeeioou').gsub(/[^a-z]/, '')
+  comuni.find do |c|
+    comune_term_gi = c['denominazione_ita'].split('/').first
+                                           .downcase.tr('àâçèéêìòôù', 'aaceeeioou').gsub(/[^a-z]/, '')
+    comune_term_istat =~ Regexp.new(comune_term_gi)
+  end
 end
 
 def write_comuni(comuni)
@@ -171,6 +186,7 @@ def write_comuni(comuni)
              CSV.generate(headers: true) do |csv|
                csv << %w[province_istat
                          name
+                         name_alt
                          partial_istat
                          cadastrial_code
                          postal_codes
@@ -182,6 +198,7 @@ def write_comuni(comuni)
                comuni.each do |c|
                  csv << [c['codice_istat_provincia'],
                          c['denominazione_ita'],
+                         c['denominazione_altra'],
                          c['codice_istat_comune'],
                          c['codice_belfiore'],
                          c['cap'].join(' '),
