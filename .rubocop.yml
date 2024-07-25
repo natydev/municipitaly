@@ -3,7 +3,7 @@ AllCops:
   DefaultFormatter: progress
   DisplayStyleGuide: true
   DisplayCopNames: false
-  TargetRubyVersion: 3.3
+  TargetRubyVersion: 3.0
   NewCops: enable
 
 Metrics/BlockLength:
