@@ -7,6 +7,7 @@ def fullpath(relative)
 end
 
 def download_gi
+  # https://www.gardainformatica.it/database-comuni-italiani
   gi_source = 'https://www.gardainformatica.it/gi_db_comuni/gi_db_comuni-2024-05-27-545c8.zip'
 
   # Download the file and extract the content

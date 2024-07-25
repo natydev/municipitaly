@@ -4,7 +4,7 @@ require 'simplecov'
 SimpleCov.start
 
 require 'bundler/setup'
-require 'municipitaly'
+require 'municipitaly2'
 require 'support/rspec_helpers'
 
 RSpec.configure do |config|

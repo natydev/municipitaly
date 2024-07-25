@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Municipitaly
+module Municipitaly2
   # Define data structure for a Region
   class Region
     include DataCaller
@@ -15,18 +15,18 @@ module Municipitaly
 
     attr_reader :zone_code, :name, :istat, :partial_iso3166
 
-    # returns an array of all +Municipitaly::Region+ objects.
+    # returns an array of all +Municipitaly2::Region+ objects.
     def self.all
       data.regions
     end
 
-    # returns an array of all +Municipitaly::Province+ objects belongs
+    # returns an array of all +Municipitaly2::Province+ objects belongs
     # to current region.
     def provinces
       @provinces ||= Search.provinces_from_region_istat(istat)
     end
 
-    # returns an array of all +Municipitaly::Municipality+ objects belongs
+    # returns an array of all +Municipitaly2::Municipality+ objects belongs
     # to current region.
     def municipalities
       @municipalities ||= Search.municipalities_from_region_istat(istat)

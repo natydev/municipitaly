@@ -9,21 +9,21 @@ AllCops:
 Metrics/BlockLength:
   Max: 50
   Exclude:
-    - 'municipitaly.gemspec'
+    - 'municipitaly2.gemspec'
     - 'lib/**/*.rb'
     - 'spec/**/*.rb'
 Metrics/ClassLength:
   Exclude:
-    - 'lib/municipitaly/search.rb'
+    - 'lib/municipitaly2/search.rb'
 
 Metrics/ParameterLists:
   Max: 10
 
 Style/ClassVars:
   Exclude:
-    - 'lib/municipitaly/data.rb'
+    - 'lib/municipitaly2/data.rb'
 
 Style/CommentedKeyword:
   Exclude:
-    - 'lib/municipitaly/search.rb'
+    - 'lib/municipitaly2/search.rb'
     

@@ -1,4 +1,4 @@
-# 🇮🇹 Municipitaly
+# 🇮🇹 Municipitaly2
 
 [![Build Status](https://travis-ci.org/natydev/municipitaly.png?branch=master)](https://travis-ci.org/natydev/municipitaly)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/07a4926100e3df1cdd72/test_coverage)](https://codeclimate.com/github/natydev/municipitaly/test_coverage)
@@ -12,7 +12,7 @@ This gem provide various data about 🇮🇹 Italian subdivisions and municipali
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'municipitaly', git: 'https://github.com/yupswing/municipitaly.git', branch: 'master'
+gem 'municipitaly2', git: 'https://github.com/yupswing/municipitaly2.git', branch: 'master'
 ```
 
 And then execute:
@@ -47,29 +47,29 @@ These entities are present, subpoints are data attributes:
 
 ## 🛠 Usage and examples
 
-The **Municipitaly::Search** is the principal class used to search entities.  
+The **Municipitaly2::Search** is the principal class used to search entities.  
 Returned data are stored in 4 different types of entity models:
 
-- **Municipitaly::Zone**
-- **Municipitaly::Region**
-- **Municipitaly::Province**
-- **Municipitaly::Municipality**
+- **Municipitaly2::Zone**
+- **Municipitaly2::Region**
+- **Municipitaly2::Province**
+- **Municipitaly2::Municipality**
 
-Retrieve all zones (return an array of `Municipitaly::Zone` objects):
+Retrieve all zones (return an array of `Municipitaly2::Zone` objects):
 
 ```ruby
 # inside an irb or rails console:
-require 'municipitaly'
+require 'municipitaly2'
 
-zones = Municipitaly::Zone.all
-# => [#<Municipitaly::Zone:0x0000...]
+zones = Municipitaly2::Zone.all
+# => [#<Municipitaly2::Zone:0x0000...]
 ```
 
 pick a random zone:
 
 ```ruby
 zone = zones.sample
-# => #<Municipitaly::Zone:0x00007fb8390b9f48 @name="Centro", @code="3">
+# => #<Municipitaly2::Zone:0x00007fb8390b9f48 @name="Centro", @code="3">
 ```
 
 retrive data zone:
@@ -82,32 +82,32 @@ zone.code
 # => "3"
 ```
 
-all regions belongs to a zone (return an array of `Municipitaly::Region` objects):
+all regions belongs to a zone (return an array of `Municipitaly2::Region` objects):
 
 ```ruby
 zone.regions
-# => [#<Municipitaly::Region:0x00007fb83883c550...]
+# => [#<Municipitaly2::Region:0x00007fb83883c550...]
 ```
 
 and so for other entities:
 
 ```ruby
 zone.provinces
-# => [#<Municipitaly::Province:0x00007fb83a1478...]
+# => [#<Municipitaly2::Province:0x00007fb83a1478...]
 
 zone.municipalities
-# => [#<Municipitaly::Municipality:0x00007fb83a...]
+# => [#<Municipitaly2::Municipality:0x00007fb83a...]
 ```
 
 ### 🔎 Search
 
-**Municipitaly::Search** is the most useful and interesting class: with that you can search single or multiple entities by the name, code or other attributes.
+**Municipitaly2::Search** is the most useful and interesting class: with that you can search single or multiple entities by the name, code or other attributes.
 
 Search municipalities **from its name**: is case insensitive and can be partial (it returns an Array):
 
 ```ruby
-municipalities = Municipitaly::Search.municipalities_from_name('ricco')
-# => [#<Municipitaly::Municipality:0x00007d6f8c10e428
+municipalities = Municipitaly2::Search.municipalities_from_name('ricco')
+# => [#<Municipitaly2::Municipality:0x00007d6f8c10e428
 #       @area=26.2065,
 #       @cadastrial_code="I640",
 #       @latitude=44.5078406,
@@ -117,7 +117,7 @@ municipalities = Municipitaly::Search.municipalities_from_name('ricco')
 #       @population=7615,
 #       @postal_codes=["16010"],
 #       @province_istat="010">,
-#     #<Municipitaly::Municipality:0x00007d6f8c106048
+#     #<Municipitaly2::Municipality:0x00007d6f8c106048
 #       @area=37.7634,
 #       @cadastrial_code="H275",
 #       @latitude=44.1555442,
@@ -127,7 +127,7 @@ municipalities = Municipitaly::Search.municipalities_from_name('ricco')
 #       @population=3615,
 #       @postal_codes=["19020"],
 #       @province_istat="011">,
-#     #<Municipitaly::Municipality:0x00007d6f8c233a38
+#     #<Municipitaly2::Municipality:0x00007d6f8c233a38
 #       @area=20.3924,
 #       @cadastrial_code="B031",
 #       @latitude=45.5328242,
@@ -139,7 +139,7 @@ municipalities = Municipitaly::Search.municipalities_from_name('ricco')
 #       @province_istat="028">]
 
 municipality = municipalities.first
-# => #<Municipitaly::Municipality:0x00007fb83918483..>
+# => #<Municipitaly2::Municipality:0x00007fb83918483..>
 
 municipality.name
 # => "Serra Riccò"
@@ -158,36 +158,36 @@ municipality.province_acronym
 # => "PD"
 
 municipality.province
-# => #<Municipitaly::Province:0x00007fb83a12701...>
+# => #<Municipitaly2::Province:0x00007fb83a12701...>
 
 municipality.region_name
 # => "Veneto"
 
 municipality.region
-# => #<Municipitaly::Region:0x00007fb83883cf28...>
+# => #<Municipitaly2::Region:0x00007fb83883cf28...>
 
 municipality.zone
-# => #<Municipitaly::Zone:0x00007fb8390bb938...>
+# => #<Municipitaly2::Zone:0x00007fb8390bb938...>
 ```
 
 or retrieve nested entities:
 
 ```ruby
 padua = municipality.province
-# => #<Municipitaly::Province:0x00007fb83a127010...>
+# => #<Municipitaly2::Province:0x00007fb83a127010...>
 
 padua.municipalities
-# => [#<Municipitaly::Municipality:0x00007fb83915b730...]
+# => [#<Municipitaly2::Municipality:0x00007fb83915b730...]
 ```
 
 Search municipalities **from a single postal code**:
 
 ```ruby
-municipalities = Municipitaly::Search.municipalities_from_postal_code('50145')
-# => [#<Municipitaly::Municipality:0x00007fb83a295938 @province_istat="048", @name="Firenze"...]
+municipalities = Municipitaly2::Search.municipalities_from_postal_code('50145')
+# => [#<Municipitaly2::Municipality:0x00007fb83a295938 @province_istat="048", @name="Firenze"...]
 
 florence = municipalities.first
-# => #<Municipitaly::Municipality:0x00007fb83a295938...>
+# => #<Municipitaly2::Municipality:0x00007fb83a295938...>
 
 florence.postal_codes
 #  => ["50121", "50122", "50123", "50124", "50125", "50126", "50127", "50128", "50129", "50130", "50131", "50132", "50133", "50134", "50135", "50136", "50137", "50138", "50139", "50140", "50141", "50142", "50143", "50144", "50145"]

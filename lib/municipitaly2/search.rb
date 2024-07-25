@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module Municipitaly
-  # +Municipitaly::Search+ class implement different search methods.
+module Municipitaly2
+  # +Municipitaly2::Search+ class implement different search methods.
   #
   # You <b>must use</b> shortcut <b>class methods</b> that invoke private
   # instance methods having same method name, for example:
@@ -40,7 +40,7 @@ module Municipitaly
 
     protected
 
-    # returns a +Municipitaly::Zone+ object from a <b>zone code</b> term
+    # returns a +Municipitaly2::Zone+ object from a <b>zone code</b> term
     #
     # example usage:
     #   zone = Search.zone_from_code('4')
@@ -50,7 +50,7 @@ module Municipitaly
       end
     end
 
-    # returns a +Municipitaly::Region+ object from a <b>region istat</b> term
+    # returns a +Municipitaly2::Region+ object from a <b>region istat</b> term
     #
     # example usage:
     #   region = Search.region_from_istat('15')
@@ -60,7 +60,7 @@ module Municipitaly
       end
     end
 
-    # returns an array of +Municipitaly::Region+ objects from a <b>zone
+    # returns an array of +Municipitaly2::Region+ objects from a <b>zone
     # code</b> term
     #
     # example usage:
@@ -71,22 +71,22 @@ module Municipitaly
       end
     end
 
-    # returns a +Municipitaly::Province+ object from a <b>province name</b>
+    # returns a +Municipitaly2::Province+ object from a <b>province name</b>
     # term
     #
     # example usage:
     #   province = Search.province_from_name('Paler')
     def province_from_name # :doc:
-      term_set = Municipitaly.sanitize_term(term)
+      term_set = Municipitaly2.sanitize_term(term)
       return nil if term_set.size < 3
 
       data.provinces.find do |p|
-        name_set = Municipitaly.sanitize_term(p.name)
+        name_set = Municipitaly2.sanitize_term(p.name)
         name_set =~ Regexp.new(term_set)
       end
     end
 
-    # returns a +Municipitaly::Province+ object from a <b>province istat</b>
+    # returns a +Municipitaly2::Province+ object from a <b>province istat</b>
     # term
     #
     # example usage:
@@ -97,7 +97,7 @@ module Municipitaly
       end
     end
 
-    # returns a +Municipitaly::Province+ object from a <b>province acronym</b>
+    # returns a +Municipitaly2::Province+ object from a <b>province acronym</b>
     # term
     #
     # example usage:
@@ -108,7 +108,7 @@ module Municipitaly
       end
     end
 
-    # returns an array of +Municipitaly::Province+ objects from a <b>region
+    # returns an array of +Municipitaly2::Province+ objects from a <b>region
     # istat</b> term
     #
     # example usage:
@@ -119,7 +119,7 @@ module Municipitaly
       end
     end
 
-    # returns an array of +Municipitaly::Province+ objects from a <b>zone
+    # returns an array of +Municipitaly2::Province+ objects from a <b>zone
     # code</b> term
     #
     # example usage:
@@ -131,7 +131,7 @@ module Municipitaly
       end
     end
 
-    # returns an array of +Municipitaly::Municipality+ objects from a
+    # returns an array of +Municipitaly2::Municipality+ objects from a
     # <b>municipality name</b> term.
     # Term can be a partial string and is case insensitive.
     # The optional parameter +greedy+ [boolean] permit to serch exact term
@@ -142,7 +142,7 @@ module Municipitaly
     #   municipalities = Search.municipalities_from_name('monte', greedy: false)
     def municipalities_from_name # :doc:
       greedy = opts.fetch(:greedy, true)
-      term_set = Municipitaly.sanitize_term(term)
+      term_set = Municipitaly2.sanitize_term(term)
 
       return [] if term_set.size < 3
 
@@ -152,11 +152,11 @@ module Municipitaly
                  Regexp.new("^#{term_set}$", true)
                end
       data.municipalities.select do |m|
-        Municipitaly.sanitize_term(m.name) =~ regexp || (m.name_alt && Municipitaly.sanitize_term(m.name_alt) =~ regexp)
+        Municipitaly2.sanitize_term(m.name) =~ regexp || (m.name_alt && Municipitaly2.sanitize_term(m.name_alt) =~ regexp)
       end
     end
 
-    # returns a +Municipitaly::Municipality+ object from a <b>cadastrial
+    # returns a +Municipitaly2::Municipality+ object from a <b>cadastrial
     # code</b> term
     #
     # example usage:
@@ -167,7 +167,7 @@ module Municipitaly
       end
     end
 
-    # returns a +Municipitaly::Municipality+ object from a <b>municipality
+    # returns a +Municipitaly2::Municipality+ object from a <b>municipality
     # istat</b> term
     #
     # example usage:
@@ -180,7 +180,7 @@ module Municipitaly
       end
     end
 
-    # returns an array of +Municipitaly::Municipality+ objects from a
+    # returns an array of +Municipitaly2::Municipality+ objects from a
     # <b>postal code</b> term.
     #
     # example usage:
@@ -191,7 +191,7 @@ module Municipitaly
       end
     end
 
-    # returns an array of +Municipitaly::Municipality+ objects from a
+    # returns an array of +Municipitaly2::Municipality+ objects from a
     # <b>province istat</b> term.
     #
     # example usage:
@@ -202,7 +202,7 @@ module Municipitaly
       end
     end
 
-    # returns an array of +Municipitaly::Municipality+ objects from a
+    # returns an array of +Municipitaly2::Municipality+ objects from a
     # <b>region istat</b> term.
     #
     # example usage:
@@ -212,7 +212,7 @@ module Municipitaly
       municipalities_from_province_istats(province_istats)
     end
 
-    # returns an array of +Municipitaly::Municipality+ objects from a
+    # returns an array of +Municipitaly2::Municipality+ objects from a
     # <b>zone code</b> term.
     #
     # example usage:

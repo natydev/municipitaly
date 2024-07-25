@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'municipitaly/municipality'
+require 'municipitaly2/municipality'
 
-RSpec.describe Municipitaly::Municipality do
+RSpec.describe Municipitaly2::Municipality do
   let(:subject) do
     described_class.new(province_istat: '034', name: 'Parma', name_alt: nil,
                         partial_istat: '027', cadastrial_code: 'G337',
@@ -59,14 +59,14 @@ RSpec.describe Municipitaly::Municipality do
     it 'returns array of all municipalities' do
       expect(described_class.all).to be_kind_of(Array)
       expect(described_class.all.first)
-        .to be_kind_of(Municipitaly::Municipality)
+        .to be_kind_of(Municipitaly2::Municipality)
       expect(described_class.all.size).to eq(7896) # 2024-05-27
     end
   end
   context 'province' do
     it 'return the belongs province' do
       expect(subject.province)
-        .to be_kind_of(Municipitaly::Province)
+        .to be_kind_of(Municipitaly2::Province)
       expect(subject.province.name)
         .to eq('Parma')
     end
@@ -80,7 +80,7 @@ RSpec.describe Municipitaly::Municipality do
   context 'region' do
     it 'return the belongs region' do
       expect(subject.region)
-        .to be_kind_of(Municipitaly::Region)
+        .to be_kind_of(Municipitaly2::Region)
       expect(subject.region.name)
         .to eq('Emilia-Romagna')
     end
@@ -100,7 +100,7 @@ RSpec.describe Municipitaly::Municipality do
   context 'zone' do
     it 'return the belongs zone' do
       expect(subject.zone)
-        .to be_kind_of(Municipitaly::Zone)
+        .to be_kind_of(Municipitaly2::Zone)
       expect(subject.zone.name)
         .to eq('Nord-est')
     end

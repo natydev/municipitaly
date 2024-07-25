@@ -2,21 +2,21 @@
 
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'municipitaly/version'
+require 'municipitaly2/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'municipitaly'
-  spec.version       = Municipitaly::VERSION
-  spec.authors       = ['NatyDev']
-  spec.email         = ['natydev@aol.com']
+  spec.name          = 'municipitaly2'
+  spec.version       = Municipitaly2::VERSION
+  spec.authors       = %w[yupswing NatyDev]
+  spec.email         = ['me@simonecingano.it', 'natydev@aol.com']
 
-  spec.summary       = 'Municipitaly'
+  spec.summary       = 'Municipitaly2'
   spec.description   = 'Codes (postal, istat, cadastrian, ...) about Italian ' \
                        'subdivisions and municipalities in Italy [city, cities]'
-  spec.homepage      = 'https://github.com/natydev/municipitaly'
+  spec.homepage      = 'https://github.com/yupswing/municipitaly2'
   spec.license       = 'MIT'
   spec.metadata = {
-    'documentation_uri' => 'https://www.rubydoc.info/github/natydev/municipitaly/master',
+    # 'documentation_uri' => 'https://www.rubydoc.info/github/natydev/municipitaly/master',
     'rubygems_mfa_required' => 'true'
   }
 
@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
   # The `git ls-files -z` loads the files in the RubyGem.
   spec.files = Dir.chdir(File.expand_path(__dir__)) do
     `git ls-files -z`.split("\x0")
-                     .reject { |f| f.match(%r{^(test|spec|features)/}) }
+                     .reject { |f| f.match(%r{^(test|spec|features|tools)/}) }
   end
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }

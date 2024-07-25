@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'municipitaly/region'
+require 'municipitaly2/region'
 
-RSpec.describe Municipitaly::Region do
+RSpec.describe Municipitaly2::Region do
   let(:subject) do
     described_class.new(zone_code: '4', name: 'Molise', istat: '14',
                         partial_iso3166: '67')
@@ -32,14 +32,14 @@ RSpec.describe Municipitaly::Region do
   context '.all' do
     it 'returns array of all regions' do
       expect(described_class.all).to be_kind_of(Array)
-      expect(described_class.all.first).to be_kind_of(Municipitaly::Region)
+      expect(described_class.all.first).to be_kind_of(Municipitaly2::Region)
       expect(described_class.all.size).to eq(20)
     end
   end
   context 'provinces' do
     it 'returns all provinces belongs current region' do
       expect(subject.provinces).to be_kind_of(Array)
-      expect(subject.provinces.first).to be_kind_of(Municipitaly::Province)
+      expect(subject.provinces.first).to be_kind_of(Municipitaly2::Province)
       expect(subject.provinces.size).to eq(2)
     end
   end
@@ -47,14 +47,14 @@ RSpec.describe Municipitaly::Region do
     it 'returns all municipalities belongs current region' do
       expect(subject.municipalities).to be_kind_of(Array)
       expect(subject.municipalities.first)
-        .to be_kind_of(Municipitaly::Municipality)
+        .to be_kind_of(Municipitaly2::Municipality)
       expect(subject.municipalities.size).to eq(136)
     end
   end
   context 'zone' do
     it 'return the belongs zone' do
       expect(subject.zone)
-        .to be_kind_of(Municipitaly::Zone)
+        .to be_kind_of(Municipitaly2::Zone)
       expect(subject.zone.name)
         .to eq('Sud')
     end

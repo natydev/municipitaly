@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Municipitaly
+module Municipitaly2
   # Define data structure for a Province
   class Province
     extend Forwardable
@@ -17,12 +17,12 @@ module Municipitaly
 
     attr_reader :region_istat, :name, :istat, :acronym
 
-    # returns an array of all +Municipitaly::Province+ objects.
+    # returns an array of all +Municipitaly2::Province+ objects.
     def self.all
       data.provinces
     end
 
-    # returns an array of all +Municipitaly::Municipality+ objects belongs
+    # returns an array of all +Municipitaly2::Municipality+ objects belongs
     # to current province.
     def municipalities
       @municipalities ||= Search.municipalities_from_province_istat(istat)

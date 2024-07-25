@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Municipitaly
+module Municipitaly2
   # Define data structure for a Municipality
   class Municipality
     extend Forwardable
@@ -56,7 +56,7 @@ module Municipitaly
     def_delegator :province, :name, :province_name
     def_delegator :province, :region_istat, :region_istat
 
-    # returns an array of all +Municipitaly::Municipality+ objects.
+    # returns an array of all +Municipitaly2::Municipality+ objects.
     def self.all
       data.municipalities
     end
@@ -70,7 +70,7 @@ module Municipitaly
       name_alt.nil? ? name : "#{name}/#{name_alt}"
     end
 
-    # returns +Municipitaly::Province+ object for current municipality.
+    # returns +Municipitaly2::Province+ object for current municipality.
     def province
       @province ||= Search.province_from_istat(province_istat)
     end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Municipitaly
+module Municipitaly2
   # Define collection
   class Data
     @@zones = []

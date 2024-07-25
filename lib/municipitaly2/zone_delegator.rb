@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Municipitaly
+module Municipitaly2
   # shared module to delegate Zone istance and its methods
   module ZoneDelegator
     extend Forwardable
