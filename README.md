@@ -1,9 +1,6 @@
 # 🇮🇹 Municipitaly2
 
-[![Build Status](https://travis-ci.org/natydev/municipitaly.png?branch=master)](https://travis-ci.org/natydev/municipitaly)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/07a4926100e3df1cdd72/test_coverage)](https://codeclimate.com/github/natydev/municipitaly/test_coverage)
-[![Maintainability](https://api.codeclimate.com/v1/badges/07a4926100e3df1cdd72/maintainability)](https://codeclimate.com/github/natydev/municipitaly/maintainability)
-[![Gem Version](https://badge.fury.io/rb/municipitaly.svg)](https://badge.fury.io/rb/municipitaly)
+[![Gem Version](https://badge.fury.io/rb/municipitaly2.svg)](https://badge.fury.io/rb/municipitaly2)
 
 This gem provide various data about 🇮🇹 Italian subdivisions and municipalities. As well the entire updated list of provinces, regions and municipalities names, it provide useful codes (📯 postal code(s), 🌐 [ISTAT](https://www.istat.it/en/) codes, cadastrial code, population, ...).
 
@@ -207,7 +204,7 @@ Complete list in [this section](CHANGELOG.md)
 ## 🤝 Contributing
 
 Fells free to improve or suggest new features/ideas.
-Bug reports and pull requests are welcome on GitHub at https://github.com/natydev/municipitaly. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/yupswing/municipitaly2. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 If you want to contribute keep these guidelines in mind:
 
